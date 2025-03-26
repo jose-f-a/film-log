@@ -6,8 +6,9 @@ export const Film = sqliteTable('FILM', {
   name: text('NAME').notNull(),
   iso: integer('ISO').notNull(),
   exposures: integer('EXPOSURES').notNull(),
-  expiration: integer('EXPIRATION', { mode: 'timestamp' }).notNull(),
-  used: integer('USED', { mode: 'boolean' }).notNull()
+  status: text('STATUS').notNull(),
+  expiration: integer('EXPIRATION', { mode: 'timestamp' }),
+  developedAt: integer('DEVELOPEDAT', { mode: 'timestamp' })
 });
 
 export const FilmSession = sqliteTable("FILMSESSION", {
@@ -35,7 +36,7 @@ export const FilmLog = sqliteTable('FILMLOG', {
   shutterSpeed: integer('SHUTTERSPEED').notNull(),
   aperture: real('APERTURE').notNull(),
   notes: text('NOTES'),
-  timestamp: integer('TIMESTAMP', { mode: 'timestamp' }).notNull(),
+  timestamp: integer('TIMESTAMP', { mode: 'timestamp' }),
   digitalPhoto: blob('DIGITALPHOTO'),
   filmPhoto: blob('FILMPHOTO'),
   uidLens: integer('UIDLENS').notNull().references(() => Lens.uidLens),
@@ -76,3 +77,6 @@ export const FilmLogRelations = relations(FilmLog, ({ one }) => ({
     references: [Lens.uidLens]
   })
 }));
+
+export type Camera = typeof Camera.$inferSelect;
+export type FilmSession = typeof FilmSession.$inferSelect;

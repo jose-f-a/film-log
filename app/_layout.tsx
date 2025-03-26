@@ -1,24 +1,23 @@
-import { drizzle } from "drizzle-orm/expo-sqlite";
 import { Stack } from "expo-router";
-import { openDatabaseSync, SQLiteProvider } from "expo-sqlite";
-import { Suspense, useEffect } from "react";
+import { SQLiteProvider } from "expo-sqlite";
+import { Suspense } from "react";
 import { ActivityIndicator } from "react-native";
-import migrations from '@/drizzle/migrations';
 import { useMigrations } from 'drizzle-orm/expo-sqlite/migrator';
-import { addDummyData } from '@/db/addDummyData';
+import migrations from '@/drizzle/migrations';
+import {db, DATABASENAME} from '@/db/db';
+import { useDrizzleStudio } from 'expo-drizzle-studio-plugin';
 
-export const DATABASENAME = process.env.DATABASENAME as string;
+// import { addDummyData } from '@/db/addDummyData';
 
 export default function RootLayout() {
-  const expoDB = openDatabaseSync(DATABASENAME);
-  const db = drizzle(expoDB);
   const { success, error } = useMigrations(db, migrations);
+  useDrizzleStudio(db);
 
-  useEffect(() => {
-    if (success) {
-      addDummyData(db);
-    }
-  })
+  // useEffect(() => {
+  //   if (success) {
+  //     addDummyData(db);
+  //   }
+  // }, [success]);
 
   return (
     <Suspense fallback={<ActivityIndicator size="large" />}>

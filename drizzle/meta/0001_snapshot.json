@@ -1,8 +1,8 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "ac65c124-dfba-431a-87e0-1bfb83668938",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "4ece810f-b20a-423e-ac8b-e028cebeb307",
+  "prevId": "ac65c124-dfba-431a-87e0-1bfb83668938",
   "tables": {
     "CAMERA": {
       "name": "CAMERA",
@@ -66,25 +66,25 @@
           "notNull": true,
           "autoincrement": false
         },
+        "STATUS": {
+          "name": "STATUS",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
         "EXPIRATION": {
           "name": "EXPIRATION",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "autoincrement": false
         },
         "DEVELOPEDAT": {
           "name": "DEVELOPEDAT",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "STATUS": {
-          "name": "STATUS",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "autoincrement": false
         }
       },
@@ -129,7 +129,7 @@
           "name": "TIMESTAMP",
           "type": "integer",
           "primaryKey": false,
-          "notNull": true,
+          "notNull": false,
           "autoincrement": false
         },
         "DIGITALPHOTO": {

@@ -10,7 +10,8 @@ CREATE TABLE `FILM` (
 	`ISO` integer NOT NULL,
 	`EXPOSURES` integer NOT NULL,
 	`EXPIRATION` integer NOT NULL,
-	`USED` integer NOT NULL
+	`DEVELOPEDAT` integer NOT NULL,
+	`STATUS` integer NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE `FILMLOG` (
