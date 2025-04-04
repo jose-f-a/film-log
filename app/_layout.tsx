@@ -5,13 +5,11 @@ import { ActivityIndicator } from "react-native";
 import { useMigrations } from 'drizzle-orm/expo-sqlite/migrator';
 import migrations from '@/drizzle/migrations';
 import {db, DATABASENAME} from '@/db/db';
-import { useDrizzleStudio } from 'expo-drizzle-studio-plugin';
 
 // import { addDummyData } from '@/db/addDummyData';
 
 export default function RootLayout() {
   const { success, error } = useMigrations(db, migrations);
-  useDrizzleStudio(db);
 
   // useEffect(() => {
   //   if (success) {
