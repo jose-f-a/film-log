@@ -1,0 +1,311 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "ac65c124-dfba-431a-87e0-1bfb83668938",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "CAMERA": {
+      "name": "CAMERA",
+      "columns": {
+        "UIDCAMERA": {
+          "name": "UIDCAMERA",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "NAME": {
+          "name": "NAME",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "NOTES": {
+          "name": "NOTES",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "FILM": {
+      "name": "FILM",
+      "columns": {
+        "UIDFILM": {
+          "name": "UIDFILM",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "NAME": {
+          "name": "NAME",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "ISO": {
+          "name": "ISO",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "EXPOSURES": {
+          "name": "EXPOSURES",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "EXPIRATION": {
+          "name": "EXPIRATION",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "DEVELOPEDAT": {
+          "name": "DEVELOPEDAT",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "STATUS": {
+          "name": "STATUS",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "FILMLOG": {
+      "name": "FILMLOG",
+      "columns": {
+        "UIDLOG": {
+          "name": "UIDLOG",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "SHUTTERSPEED": {
+          "name": "SHUTTERSPEED",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "APERTURE": {
+          "name": "APERTURE",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "NOTES": {
+          "name": "NOTES",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "TIMESTAMP": {
+          "name": "TIMESTAMP",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "DIGITALPHOTO": {
+          "name": "DIGITALPHOTO",
+          "type": "blob",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "FILMPHOTO": {
+          "name": "FILMPHOTO",
+          "type": "blob",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "UIDLENS": {
+          "name": "UIDLENS",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "UIDFILMSESSION": {
+          "name": "UIDFILMSESSION",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "FILMLOG_UIDLENS_LENS_UIDLENS_fk": {
+          "name": "FILMLOG_UIDLENS_LENS_UIDLENS_fk",
+          "tableFrom": "FILMLOG",
+          "tableTo": "LENS",
+          "columnsFrom": [
+            "UIDLENS"
+          ],
+          "columnsTo": [
+            "UIDLENS"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "FILMLOG_UIDFILMSESSION_FILMSESSION_UIDFILMSESSION_fk": {
+          "name": "FILMLOG_UIDFILMSESSION_FILMSESSION_UIDFILMSESSION_fk",
+          "tableFrom": "FILMLOG",
+          "tableTo": "FILMSESSION",
+          "columnsFrom": [
+            "UIDFILMSESSION"
+          ],
+          "columnsTo": [
+            "UIDFILMSESSION"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "FILMSESSION": {
+      "name": "FILMSESSION",
+      "columns": {
+        "UIDFILMSESSION": {
+          "name": "UIDFILMSESSION",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "ACTIVE": {
+          "name": "ACTIVE",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "NOTES": {
+          "name": "NOTES",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "UIDFILM": {
+          "name": "UIDFILM",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "UIDCAMERA": {
+          "name": "UIDCAMERA",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "FILMSESSION_UIDFILM_FILM_UIDFILM_fk": {
+          "name": "FILMSESSION_UIDFILM_FILM_UIDFILM_fk",
+          "tableFrom": "FILMSESSION",
+          "tableTo": "FILM",
+          "columnsFrom": [
+            "UIDFILM"
+          ],
+          "columnsTo": [
+            "UIDFILM"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "FILMSESSION_UIDCAMERA_CAMERA_UIDCAMERA_fk": {
+          "name": "FILMSESSION_UIDCAMERA_CAMERA_UIDCAMERA_fk",
+          "tableFrom": "FILMSESSION",
+          "tableTo": "CAMERA",
+          "columnsFrom": [
+            "UIDCAMERA"
+          ],
+          "columnsTo": [
+            "UIDCAMERA"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "LENS": {
+      "name": "LENS",
+      "columns": {
+        "UIDLENS": {
+          "name": "UIDLENS",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "NAME": {
+          "name": "NAME",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "NOTES": {
+          "name": "NOTES",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}
